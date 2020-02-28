@@ -1,9 +1,11 @@
 <a title="MIT" target="_blank" href="https://opensource.org/licenses/MIT"><img src="http://img.shields.io/npm/l/vditor-react"></a>
 <a title="vditor-react" target="_blank" href="https://www.npmjs.com/package/vditor-react"><img src="http://img.shields.io/npm/v/vditor-react"></a>
 
+English version | [简体中文](README-zh_CN.md)
+
 # Vditor for React
 
-[Vditor](https://github.com/Vanessa219/vditor) is the next-generation Markdown editor by [HacPai](https://hacpai.com). This package is the [React](https://reactjs.org) wrapper of it. 
+[Vditor](https://github.com/Vanessa219/vditor) is the next-generation Markdown editor by [HacPai](https://hacpai.com). This project is the [React](https://reactjs.org) wrapper of it. 
 
 ## Installation
 
@@ -25,7 +27,7 @@ ReactDOM.render(
 );
 ```
 
-Then include the `div` tag in the HTML file: 
+Then include the specific `div` tag in the HTML file: 
 
 ```html
 <div id="node" />
