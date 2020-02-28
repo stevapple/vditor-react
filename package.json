@@ -1,0 +1,51 @@
+{
+  "name": "vditor-react",
+  "version": "0.1.1",
+  "description": "A React wrapper of Vditor, the next-generation Markdown editor. ",
+  "main": "src/index.jsx",
+  "author": "stevapple",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "react",
+    "component",
+    "vditor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevapple/vditor-react"
+  },
+  "bugs": {
+    "url": "https://github.com/stevapple/vditor-react/issues",
+    "email": "stevapple@icloud.com"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "vditor": "^2.2.11"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
