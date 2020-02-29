@@ -3,10 +3,10 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './test/index.jsx',
+  entry: './demo/index.jsx',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, './test'),
+    path: path.resolve(__dirname, './dmeo'),
   },
   module: {
     rules: [
@@ -22,11 +22,11 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './test'
+    contentBase: './demo'
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: 'test/index.html'
+      template: 'demo/index.html'
     })
   ],
 };
