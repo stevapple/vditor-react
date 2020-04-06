@@ -48,3 +48,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        name: Release ${{ steps.v.outputs.version }}
+        tag_name: v${{ steps.v.outputs.version }}
