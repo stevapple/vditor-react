@@ -1,6 +1,6 @@
 {
   "name": "vditor-react",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A React wrapper of Vditor, the next-generation Markdown editor. ",
   "main": "src/index.jsx",
   "author": "stevapple",

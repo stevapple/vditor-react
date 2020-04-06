@@ -15,12 +15,14 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
 
-    - name: Install dependencies
-      run: npm install
+    - name: Install and build
+      run: |
+        npm install
+        npm build
     - id: v
       name: Check version
       run: |
-        echo "::set-output name=version::`cat package.json | jq .version`"
+        echo "::set-output name=version::v`cat package.json | jq .version`"
         if npm view vditor-react versions --json | grep `cat package.json | jq .version` 2> /dev/null
         then
           echo "::set-output name=update::false"
@@ -28,7 +30,8 @@ jobs:
           echo "::set-output name=update::true"
         fi
 
-    - run: npm publish
+    - name: npm publish
+      run: npm publish
       if: steps.v.outputs.update == 'true'
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -38,8 +41,9 @@ jobs:
       run: |
         git config --global user.name  "${{ github.actor }}"
         git config --global user.email "`curl https://api.github.com/users/${{ github.actor }} | jq .email`"
-        git tag -a "v${{ steps.v.outputs.version }}" -m "Release ${{ steps.v.outputs.version }}"
+        git tag -a "${{ steps.v.outputs.version }}" -m "${{ steps.v.outputs.version }}"
     - name: git push
+      if: steps.v.outputs.update == 'true'
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -49,5 +53,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: Release ${{ steps.v.outputs.version }}
-        tag_name: v${{ steps.v.outputs.version }}
+        draft: true
+        name: ${{ steps.v.outputs.version }}
+        tag_name: ${{ steps.v.outputs.version }}
