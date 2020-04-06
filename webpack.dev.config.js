@@ -6,7 +6,6 @@ module.exports = {
   entry: './demo/index.jsx',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, './dmeo'),
   },
   module: {
     rules: [

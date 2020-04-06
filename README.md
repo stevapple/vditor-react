@@ -39,13 +39,13 @@ Then include the specific `div` tag in the HTML file:
 
 `vditor-react` also provides some `props` to improve the React practice, which are as follow:
 
-| Name     | Definition                              | Default  | Description                                                                                                                                  | Deprecated Vditor API |
-|----------|-----------------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| onInit   | (text: String) => {}                    | () => {} | Called after the editor UI has been loaded, with the initial text.                                                                           | options.after         |
-| onSelect | (selection: String, text: String) => {} | () => {} | Called when the text selection is updated, with the selected text and the full text.                                                         | options.select        |
-| onInput  | (text: String) => {}                    | () => {} | Called shortly after text inputs, with the full text. It won’t be called during an IME composition.                                          | options.input         |
-| darkMode | Boolean                                 | false    | Whether the editor UI is in dark mode.                                                                                                       | options.theme         |
-| disabled | Boolean                                 | false    | Whether to disable the editor (the bar cannot be disabled so far, reported in this [issue](https://github.com/Vanessa219/vditor/issues/197)).  | disabled() enable()   |
+| Name     | Definition                              | Default  | Description                                                                                                                                    | Deprecated Vditor API |
+|----------|-----------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| onInit   | (text: String) => {}                    | () => {} | Called after the editor UI has been loaded, with the initial text.                                                                             | options.after         |
+| onSelect | (selection: String, text: String) => {} | () => {} | Called when the text selection is updated, with the selected text and the full text.                                                           | options.select        |
+| onInput  | (text: String) => {}                    | () => {} | Called shortly after text inputs, with the full text. It won’t be called during an IME composition.                                            | options.input         |
+| darkMode | Boolean                                 | false    | Whether the editor UI is in dark mode.                                                                                                         | options.theme         |
+| disabled | Boolean                                 | false    | Whether to disable the editor.                                                                                                                 | disabled() enable()   |
 
 You can also extend this component and access the Vditor instance as `this.editor`. 
 

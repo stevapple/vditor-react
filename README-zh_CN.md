@@ -39,13 +39,13 @@ ReactDOM.render(
 
 特别地，`vditor-react` 提供了一部分经过封装的 `props`，如下表所示：
 
-| 名称       | 定义                                      | 默认值      | 描述                                                                                | 对应的 Vditor 接口       |
+| 名称     | 定义                                   | 默认值      | 描述                                                                                | 对应的 Vditor 接口       |
 |----------|-----------------------------------------|----------|-----------------------------------------------------------------------------------|---------------------|
 | onInit   | (text: String) => {}                    | () => {} | 在编辑器加载完成后的回调，用于获取编辑器文本的初始值                                                        | options.after       |
 | onSelect | (selection: String, text: String) => {} | () => {} | 文本选中情况变更时触发的回调，用户获取当前选中的文本（和当前编辑器文本）                                              | options.select      |
 | onInput  | (text: String) => {}                    | () => {} | 用户输入一段文本后的回调，有一定延迟，且 IME 输入法状态下不会触发                                               | options.input       |
 | darkMode | Boolean                                 | false    | 是否启用编辑器的暗黑模式                                                                      | options.theme       |
-| disabled | Boolean                                 | false    | 是否锁定编辑器区域（工具栏暂时无法锁定，已提交 [issue](https://github.com/Vanessa219/vditor/issues/197)） | disabled() enable() |
+| disabled | Boolean                                 | false    | 是否锁定编辑器区域                                                                         | disabled() enable() |
 
 你还可以继承这一类型并通过 `this.editor` 访问原始的 Vditor 实例。
 
