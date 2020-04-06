@@ -1,0 +1,50 @@
+name: Automated Release
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      run: npm install
+    - id: v
+      name: Check version
+      run: |
+        echo "::set-output name=version::`cat package.json | jq .version`"
+        if npm view vditor-react versions --json | grep `cat package.json | jq .version` 2> /dev/null
+        then
+          echo "::set-output name=update::false"
+        else
+          echo "::set-output name=update::true"
+        fi
+
+    - run: npm publish
+      if: steps.v.outputs.update == 'true'
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: git tag
+      if: steps.v.outputs.update == 'true'
+      run: |
+        git config --global user.name  "${{ github.actor }}"
+        git config --global user.email "`curl https://api.github.com/users/${{ github.actor }} | jq .email`"
+        git tag -a "v${{ steps.v.outputs.version }}" -m "Release ${{ steps.v.outputs.version }}"
+    - name: git push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: GitHub Release
+      if: steps.v.outputs.update == 'true'
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
